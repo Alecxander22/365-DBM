@@ -1,1 +1,4 @@
+-- (7.) adding a pet to the database, and putting in a customerID that does not exist in the database -- 
 
+Insert into PETS Values ('F00000046','C00000089','Snowflake','Cat','Tabby','6.5','08/14/2009','F','Y');
+--------------------------------------------------------------------------------------------------------
