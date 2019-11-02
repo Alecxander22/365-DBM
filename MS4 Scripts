@@ -2,7 +2,7 @@
 select petid as "Pets with more than 1 Administration of Medication"
 	from PET_MEDICATIONS
 	group by petid
-	having count(petid)>1
+	having count(petid)>1;
 --------------------------------------------------------------------------------------------------------
 
 -- (7.)Basic Query adding a pet to the database, and putting in a customerID that does not exist in the database -- 
