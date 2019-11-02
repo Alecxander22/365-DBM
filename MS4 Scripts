@@ -1,3 +1,10 @@
+-- (1.) Advanced Query, Group by/having. How many female dogs do we have in the database?--
+
+Select Count(petid) as 'Female dogs in the database'
+	From Pets
+		Group by Species, gender
+			Having Species='dog' and Gender='f'
+--------------------------------------------------------------------------------------------------------
 /*3. Advanced Query 3 must use the GROUP BY/HAVING clauses*/
 select petid as "Pets with more than 1 Administration of Medication"
 	from PET_MEDICATIONS
