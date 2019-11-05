@@ -1,3 +1,26 @@
+/* Milestone 4- Team 11- Team Phoenix */
+
+/* Basic Queries */
+
+/* 1. Two INSERT statements in a row – the first one adding a new Pet, the second one adding a new
+Boarding for that Pet, should succeed. */
+
+BEGIN TRANSACTION;
+
+INSERT into PETS values ('D00000456', 'C00000003', 'Wobbles', 'Dog', 'Great Dane', '23', '02/02/2018', 'M', 'Y');
+INSERT into COLOR values ('D00000456', 'Black');
+INSERT into COLOR values ('D00000456', 'Brown');
+INSERT into RESERVATION_DETAILS values ('10000061','12:15','02:32','11/03/2019','11/03/2019','S70000000');
+INSERT into PETS_RESERVATION values ('10000061','D00000456','Y','Y','0');
+
+
+SELECT * FROM PETS;
+SELECT * FROM COLOR;
+SELECT * FROM RESERVATION_DETAILS;
+SELECT * FROM PETS_RESERVATION;
+
+-ST
+
 -- (1.) Advanced Query, Group by/having. How many female dogs do we have in the database?--
 
 Select Count(petid) as 'Female dogs in the database'
