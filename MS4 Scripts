@@ -24,6 +24,29 @@ COMMIT;
 
 -ST
 
+--------------------------------------------------------------------------------------------------------
+/* 2. A similar two INSERT statements executed in the opposite order should fail. */
+
+BEGIN TRANSACTION;
+
+INSERT into PETS_RESERVATION values ('10000061','D00000456','Y','Y','0');
+INSERT into RESERVATION_DETAILS values ('10000061','12:15','02:32','11/03/2019','11/03/2019','S70000000');
+INSERT into COLOR values ('D00000456', 'Black');
+INSERT into COLOR values ('D00000456', 'Brown');
+INSERT into PETS values ('D00000456', 'C00000003', 'Wobbles', 'Dog', 'Great Dane', '23', '02/02/2018', 'M', 'Y');
+
+SELECT * FROM PETS_RESERVATION;
+SELECT * FROM RESERVATION_DETAILS;
+SELECT * FROM COLOR;
+SELECT * FROM PETS;
+
+/* This transaction did not fully execute because Reservation Details needs to be entered before Pets' Reservations.
+Reservation# in PETS_RESERVATION is a foriegn key to RESERVATION_DETAILS. */ 
+
+ROLLBACK; 
+
+-ST
+
 -------------------------------------------------------------------------------------------------------
 /* 1. Advanced Query, Group by/having. How many female dogs do we have in the database? */
 
