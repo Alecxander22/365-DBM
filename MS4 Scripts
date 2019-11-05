@@ -1,5 +1,7 @@
 /* Milestone 4- Team 11- Team Phoenix */
 
+-------------------------------------------------------------------------------------------------------
+
 /* Basic Queries */
 
 /* 1. Two INSERT statements in a row – the first one adding a new Pet, the second one adding a new
@@ -13,29 +15,31 @@ INSERT into COLOR values ('D00000456', 'Brown');
 INSERT into RESERVATION_DETAILS values ('10000061','12:15','02:32','11/03/2019','11/03/2019','S70000000');
 INSERT into PETS_RESERVATION values ('10000061','D00000456','Y','Y','0');
 
-
 SELECT * FROM PETS;
 SELECT * FROM COLOR;
 SELECT * FROM RESERVATION_DETAILS;
 SELECT * FROM PETS_RESERVATION;
 
+COMMIT;
+
 -ST
 
--- (1.) Advanced Query, Group by/having. How many female dogs do we have in the database?--
+-------------------------------------------------------------------------------------------------------
+/* 1. Advanced Query, Group by/having. How many female dogs do we have in the database? */
 
 Select Count(petid) as 'Female dogs in the database'
 	From Pets
 		Group by Species, gender
 			Having Species='dog' and Gender='f'
 --------------------------------------------------------------------------------------------------------
-/*3. Advanced Query 3 must use the GROUP BY/HAVING clauses*/
-select petid as "Pets with more than 1 Administration of Medication"
+/* 3. Advanced Query 3 must use the GROUP BY/HAVING clauses */
+
+Select petid as "Pets with more than 1 Administration of Medication"
 	from PET_MEDICATIONS
 	group by petid
 	having count(petid)>1;
 --------------------------------------------------------------------------------------------------------
-
--- (7.)Basic Query adding a pet to the database, and putting in a customerID that does not exist in the database -- 
+/* 7. Basic Query adding a pet to the database, and putting in a customerID that does not exist in the database */
 
 Insert into PETS Values ('F00000046','C00000089','Snowflake','Cat','Tabby','6.5','08/14/2009','F','Y');
 --------------------------------------------------------------------------------------------------------
