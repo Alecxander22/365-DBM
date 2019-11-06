@@ -12,13 +12,13 @@ BEGIN TRANSACTION;
 INSERT into PETS values ('D00000456', 'C00000003', 'Wobbles', 'Dog', 'Great Dane', '23', '02/02/2018', 'M', 'Y');
 INSERT into COLOR values ('D00000456', 'Black');
 INSERT into COLOR values ('D00000456', 'Brown');
-INSERT into RESERVATION_DETAILS values ('10000061','12:15','02:32','11/03/2019','11/03/2019','S70000000');
-INSERT into PETS_RESERVATION values ('10000061','D00000456','Y','Y','0');
+INSERT into RESERVATIONS values ('10000061','12:15','02:32','11/03/2019','11/03/2019','S70000000', '20.00');
+INSERT into RESERVATION_DETAILS values ('10000061','D00000456','Y','Y','0');
 
 SELECT * FROM PETS;
 SELECT * FROM COLOR;
+SELECT * FROM RESERVATIONS;
 SELECT * FROM RESERVATION_DETAILS;
-SELECT * FROM PETS_RESERVATION;
 
 COMMIT;
 
@@ -29,19 +29,19 @@ COMMIT;
 
 BEGIN TRANSACTION;
 
-INSERT into PETS_RESERVATION values ('10000061','D00000456','Y','Y','0');
-INSERT into RESERVATION_DETAILS values ('10000061','12:15','02:32','11/03/2019','11/03/2019','S70000000');
-INSERT into COLOR values ('D00000456', 'Black');
-INSERT into COLOR values ('D00000456', 'Brown');
-INSERT into PETS values ('D00000456', 'C00000003', 'Wobbles', 'Dog', 'Great Dane', '23', '02/02/2018', 'M', 'Y');
+INSERT into RESERVATION_DETAILS values ('10000062','D00000457','Y','Y','0');
+INSERT into RESERVATIONS values ('10000062','01:15','02:32','11/04/2019','11/04/2019','S70000000', '10.00');
+INSERT into COLOR values ('D00000457', 'Tan');
+INSERT into COLOR values ('D00000457', 'Brown');
+INSERT into PETS values ('D00000457', 'C00000006', 'Roxy', 'Dog', 'Shih-Tzu', '12', '05/02/2018', 'F', 'Y');
 
-SELECT * FROM PETS_RESERVATION;
 SELECT * FROM RESERVATION_DETAILS;
+SELECT * FROM RESERVATIONS;
 SELECT * FROM COLOR;
 SELECT * FROM PETS;
 
-/* This transaction did not fully execute because Reservation Details needs to be entered before Pets' Reservations.
-Reservation# in PETS_RESERVATION is a foriegn key to RESERVATION_DETAILS. */ 
+/* This transaction did not fully execute because Reservation's values needs to be entered before Reservations Detail's Values.
+Reservation# in RESERVATION_DETAILS is a foriegn key to RESERVATIONS. */ 
 
 ROLLBACK; 
 
