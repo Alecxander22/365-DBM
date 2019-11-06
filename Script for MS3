@@ -2,26 +2,6 @@
 
 /*  CREATE, INSERT, AND DISPLAY THE CONTENTS OF THE STAFF TABLE */
 
-
-create table STAFF
-       (StaffID                    char(9),
-        EmployeeType      varchar(30) Not null,
-        FName                   varchar(30) Not null,
-        LName                   varchar(30) Not null,
-        Street                     varchar(30),
-        City                         varchar(30),
-        Zip                          char(5),
-        State                       varchar(20),
-        Country                   varchar(20),
-        Phone                     char(10)    Not null,
-        PayRate                  decimal(4,2),
-        StartDate                 date,
-        AccountNumber      Decimal(12,0),
-        RoutingNumber	     Decimal(12,0),
-        FederalTaxDeduction	Decimal (3,2),
-        StateTaxDeduction	Decimal (3,2),
-        Primary Key(StaffID));
-
 create table STAFF
        (StaffID                    char(9),
         EmployeeType      varchar(30) Not null,
@@ -447,66 +427,66 @@ create table RESERVATIONS (
    Primary Key (Reservation#),
    Foreign Key (StaffID) References Staff(StaffID));
 
-insert into RESERVATIONS values ('10000001','12:15','12:42','05/26/2019','05/29/2019','S3000000','30');
-insert into RESERVATIONS values ('10000002','09:14','08:08','04/13/2019','04/14/2019','S4000000','10');
-insert into RESERVATIONS values ('10000003','12:45','13:36','05/21/2019','05/23/2019','S8000000','20');
-insert into RESERVATIONS values ('10000004','14:51','09:18','02/14/2019','02/17/2019','S5000000','30');
-insert into RESERVATIONS values ('10000005','14:10','16:26','08/03/2019','08/07/2019','S7000000','40');
-insert into RESERVATIONS values ('10000006','15:03','10:58','05/18/2019','05/21/2019','S6000000','30');
-insert into RESERVATIONS values ('10000007','11:32','15:23','02/23/2019','02/24/2019','S3000000','10');
-insert into RESERVATIONS values ('10000008','17:45','15:44','09/21/2019','09/23/2019','S4000000','20');
-insert into RESERVATIONS values ('10000009','10:58','15:26','08/20/2019','08/23/2019','S5000000','30');
-insert into RESERVATIONS values ('10000010','11:59','08:10','07/11/2019','07/15/2019','S6000000','40');
-insert into RESERVATIONS values ('10000011','17:03','09:17','02/25/2019','02/28/2019','S8000000','30');
-insert into RESERVATIONS values ('10000012','17:05','14:57','03/31/2019','04/01/2019','S7000000','10');
-insert into RESERVATIONS values ('10000013','17:15','14:06','02/06/2019','02/08/2019','S3000000','20');
-insert into RESERVATIONS values ('10000014','15:59','17:51','02/21/2019','02/24/2019','S5000000','30');
-insert into RESERVATIONS values ('10000015','14:07','14:31','03/15/2019','03/19/2019','S6000000','40');
-insert into RESERVATIONS values ('10000016','10:48','10:21','03/12/2019','03/15/2019','S4000000','30');
-insert into RESERVATIONS values ('10000017','17:41','12:17','02/24/2019','02/25/2019','S8000000','10');
-insert into RESERVATIONS values ('10000018','16:42','17:02','08/30/2019','09/01/2019','S7000000','20');
-insert into RESERVATIONS values ('10000019','16:19','11:52','08/15/2019','08/18/2019','S3000000','30');
-insert into RESERVATIONS values ('10000020','10:30','13:51','04/05/2019','04/09/2019','S4000000','40');
-insert into RESERVATIONS values ('10000021','17:57','16:22','03/07/2019','03/10/2019','S5000000','30');
-insert into RESERVATIONS values ('10000022','17:28','14:11','02/20/2019','02/21/2019','S4000000','10');
-insert into RESERVATIONS values ('10000023','15:33','12:23','06/18/2019','06/20/2019','S3000000','20');
-insert into RESERVATIONS values ('10000024','09:10','17:35','08/21/2019','08/24/2019','S8000000','30');
-insert into RESERVATIONS values ('10000025','11:06','09:55','02/12/2019','02/16/2019','S7000000','40');
-insert into RESERVATIONS values ('10000026','12:55','08:15','03/04/2019','03/07/2019','S4000000','30');
-insert into RESERVATIONS values ('10000027','16:03','10:27','05/16/2019','05/17/2019','S5000000','10');
-insert into RESERVATIONS values ('10000028','15:01','13:35','03/29/2019','03/31/2019','S8000000','20');
-insert into RESERVATIONS values ('10000029','17:48','16:39','07/10/2019','07/13/2019','S3000000','30');
-insert into RESERVATIONS values ('10000030','15:26','17:24','02/18/2019','02/22/2019','S4000000','40');
-insert into RESERVATIONS values ('10000031','16:40','12:12','06/24/2019','06/27/2019','S8000000','63');
-insert into RESERVATIONS values ('10000032','16:27','15:25','09/15/2019','09/16/2019','S5000000','21');
-insert into RESERVATIONS values ('10000033','09:36','12:58','04/28/2019','04/30/2019','S7000000','42');
-insert into RESERVATIONS values ('10000034','10:44','10:26','02/23/2019','02/26/2019','S6000000','63');
-insert into RESERVATIONS values ('10000035','17:30','16:46','06/17/2019','06/21/2019','S3000000','84');
-insert into RESERVATIONS values ('10000036','12:55','13:47','09/19/2019','09/22/2019','S4000000','63');
-insert into RESERVATIONS values ('10000037','11:21','15:28','01/23/2019','01/24/2019','S5000000','21');
-insert into RESERVATIONS values ('10000038','12:57','08:35','02/13/2019','02/15/2019','S6000000','42');
-insert into RESERVATIONS values ('10000039','12:23','08:37','05/22/2019','05/25/2019','S8000000','63');
-insert into RESERVATIONS values ('10000040','13:11','11:20','05/05/2019','05/09/2019','S7000000','84');
-insert into RESERVATIONS values ('10000041','08:37','15:20','09/03/2019','09/06/2019','S3000000','63');
-insert into RESERVATIONS values ('10000042','17:33','10:05','01/15/2019','01/16/2019','S5000000','21');
-insert into RESERVATIONS values ('10000043','16:37','13:15','02/25/2019','02/27/2019','S6000000','42');
-insert into RESERVATIONS values ('10000044','09:00','11:36','09/19/2019','09/22/2019','S4000000','63');
-insert into RESERVATIONS values ('10000045','16:07','15:11','06/11/2019','06/15/2019','S8000000','84');
-insert into RESERVATIONS values ('10000046','13:15','15:07','07/31/2019','08/03/2019','S7000000','63');
-insert into RESERVATIONS values ('10000047','09:24','08:35','01/17/2019','01/18/2019','S3000000','21');
-insert into RESERVATIONS values ('10000048','13:56','16:34','04/01/2019','04/03/2019','S4000000','42');
-insert into RESERVATIONS values ('10000049','10:48','12:31','03/06/2019','03/09/2019','S5000000','63');
-insert into RESERVATIONS values ('10000050','15:38','09:03','05/26/2019','05/30/2019','S4000000','84');
-insert into RESERVATIONS values ('10000051','09:57','15:04','09/21/2019','09/24/2019','S3000000','63');
-insert into RESERVATIONS values ('10000052','12:17','10:56','02/22/2019','02/23/2019','S8000000','21');
-insert into RESERVATIONS values ('10000053','16:19','17:33','08/19/2019','08/21/2019','S7000000','42');
-insert into RESERVATIONS values ('10000054','11:45','13:13','01/23/2019','01/26/2019','S4000000','63');
-insert into RESERVATIONS values ('10000055','11:13','13:34','09/30/2019','10/04/2019','S5000000','84');
-insert into RESERVATIONS values ('10000056','16:30','17:56','08/01/2019','08/04/2019','S8000000','63');
-insert into RESERVATIONS values ('10000057','11:18','13:44','02/04/2019','02/05/2019','S3000000','21');
-insert into RESERVATIONS values ('10000058','15:00','16:07','09/28/2019','09/30/2019','S4000000','42');
-insert into RESERVATIONS values ('10000059','13:29','15:15','08/11/2019','08/14/2019','S8000000','63');
-insert into RESERVATIONS values ('10000060','10:57','16:41','01/14/2019','01/18/2019','S5000000','84');
+insert into RESERVATIONS values ('10000001','12:15','12:42','05/26/2019','05/29/2019','S30000000','30');
+insert into RESERVATIONS values ('10000002','09:14','08:08','04/13/2019','04/14/2019','S40000000','10');
+insert into RESERVATIONS values ('10000003','12:45','13:36','05/21/2019','05/23/2019','S80000000','20');
+insert into RESERVATIONS values ('10000004','14:51','09:18','02/14/2019','02/17/2019','S50000000','30');
+insert into RESERVATIONS values ('10000005','14:10','16:26','08/03/2019','08/07/2019','S70000000','40');
+insert into RESERVATIONS values ('10000006','15:03','10:58','05/18/2019','05/21/2019','S60000000','30');
+insert into RESERVATIONS values ('10000007','11:32','15:23','02/23/2019','02/24/2019','S30000000','10');
+insert into RESERVATIONS values ('10000008','17:45','15:44','09/21/2019','09/23/2019','S40000000','20');
+insert into RESERVATIONS values ('10000009','10:58','15:26','08/20/2019','08/23/2019','S50000000','30');
+insert into RESERVATIONS values ('10000010','11:59','08:10','07/11/2019','07/15/2019','S60000000','40');
+insert into RESERVATIONS values ('10000011','17:03','09:17','02/25/2019','02/28/2019','S80000000','30');
+insert into RESERVATIONS values ('10000012','17:05','14:57','03/31/2019','04/01/2019','S70000000','10');
+insert into RESERVATIONS values ('10000013','17:15','14:06','02/06/2019','02/08/2019','S30000000','20');
+insert into RESERVATIONS values ('10000014','15:59','17:51','02/21/2019','02/24/2019','S50000000','30');
+insert into RESERVATIONS values ('10000015','14:07','14:31','03/15/2019','03/19/2019','S60000000','40');
+insert into RESERVATIONS values ('10000016','10:48','10:21','03/12/2019','03/15/2019','S40000000','30');
+insert into RESERVATIONS values ('10000017','17:41','12:17','02/24/2019','02/25/2019','S80000000','10');
+insert into RESERVATIONS values ('10000018','16:42','17:02','08/30/2019','09/01/2019','S70000000','20');
+insert into RESERVATIONS values ('10000019','16:19','11:52','08/15/2019','08/18/2019','S30000000','30');
+insert into RESERVATIONS values ('10000020','10:30','13:51','04/05/2019','04/09/2019','S40000000','40');
+insert into RESERVATIONS values ('10000021','17:57','16:22','03/07/2019','03/10/2019','S50000000','30');
+insert into RESERVATIONS values ('10000022','17:28','14:11','02/20/2019','02/21/2019','S40000000','10');
+insert into RESERVATIONS values ('10000023','15:33','12:23','06/18/2019','06/20/2019','S30000000','20');
+insert into RESERVATIONS values ('10000024','09:10','17:35','08/21/2019','08/24/2019','S80000000','30');
+insert into RESERVATIONS values ('10000025','11:06','09:55','02/12/2019','02/16/2019','S70000000','40');
+insert into RESERVATIONS values ('10000026','12:55','08:15','03/04/2019','03/07/2019','S40000000','30');
+insert into RESERVATIONS values ('10000027','16:03','10:27','05/16/2019','05/17/2019','S50000000','10');
+insert into RESERVATIONS values ('10000028','15:01','13:35','03/29/2019','03/31/2019','S80000000','20');
+insert into RESERVATIONS values ('10000029','17:48','16:39','07/10/2019','07/13/2019','S30000000','30');
+insert into RESERVATIONS values ('10000030','15:26','17:24','02/18/2019','02/22/2019','S40000000','40');
+insert into RESERVATIONS values ('10000031','16:40','12:12','06/24/2019','06/27/2019','S80000000','63');
+insert into RESERVATIONS values ('10000032','16:27','15:25','09/15/2019','09/16/2019','S50000000','21');
+insert into RESERVATIONS values ('10000033','09:36','12:58','04/28/2019','04/30/2019','S70000000','42');
+insert into RESERVATIONS values ('10000034','10:44','10:26','02/23/2019','02/26/2019','S60000000','63');
+insert into RESERVATIONS values ('10000035','17:30','16:46','06/17/2019','06/21/2019','S30000000','84');
+insert into RESERVATIONS values ('10000036','12:55','13:47','09/19/2019','09/22/2019','S40000000','63');
+insert into RESERVATIONS values ('10000037','11:21','15:28','01/23/2019','01/24/2019','S50000000','21');
+insert into RESERVATIONS values ('10000038','12:57','08:35','02/13/2019','02/15/2019','S60000000','42');
+insert into RESERVATIONS values ('10000039','12:23','08:37','05/22/2019','05/25/2019','S80000000','63');
+insert into RESERVATIONS values ('10000040','13:11','11:20','05/05/2019','05/09/2019','S70000000','84');
+insert into RESERVATIONS values ('10000041','08:37','15:20','09/03/2019','09/06/2019','S30000000','63');
+insert into RESERVATIONS values ('10000042','17:33','10:05','01/15/2019','01/16/2019','S50000000','21');
+insert into RESERVATIONS values ('10000043','16:37','13:15','02/25/2019','02/27/2019','S60000000','42');
+insert into RESERVATIONS values ('10000044','09:00','11:36','09/19/2019','09/22/2019','S40000000','63');
+insert into RESERVATIONS values ('10000045','16:07','15:11','06/11/2019','06/15/2019','S80000000','84');
+insert into RESERVATIONS values ('10000046','13:15','15:07','07/31/2019','08/03/2019','S70000000','63');
+insert into RESERVATIONS values ('10000047','09:24','08:35','01/17/2019','01/18/2019','S30000000','21');
+insert into RESERVATIONS values ('10000048','13:56','16:34','04/01/2019','04/03/2019','S40000000','42');
+insert into RESERVATIONS values ('10000049','10:48','12:31','03/06/2019','03/09/2019','S50000000','63');
+insert into RESERVATIONS values ('10000050','15:38','09:03','05/26/2019','05/30/2019','S40000000','84');
+insert into RESERVATIONS values ('10000051','09:57','15:04','09/21/2019','09/24/2019','S30000000','63');
+insert into RESERVATIONS values ('10000052','12:17','10:56','02/22/2019','02/23/2019','S80000000','21');
+insert into RESERVATIONS values ('10000053','16:19','17:33','08/19/2019','08/21/2019','S70000000','42');
+insert into RESERVATIONS values ('10000054','11:45','13:13','01/23/2019','01/26/2019','S40000000','63');
+insert into RESERVATIONS values ('10000055','11:13','13:34','09/30/2019','10/04/2019','S50000000','84');
+insert into RESERVATIONS values ('10000056','16:30','17:56','08/01/2019','08/04/2019','S80000000','63');
+insert into RESERVATIONS values ('10000057','11:18','13:44','02/04/2019','02/05/2019','S30000000','21');
+insert into RESERVATIONS values ('10000058','15:00','16:07','09/28/2019','09/30/2019','S40000000','42');
+insert into RESERVATIONS values ('10000059','13:29','15:15','08/11/2019','08/14/2019','S80000000','63');
+insert into RESERVATIONS values ('10000060','10:57','16:41','01/14/2019','01/18/2019','S50000000','84');
 
 Select * from RESERVATIONS;
 
@@ -524,70 +504,70 @@ Vaccinations		char (1),
 Bath			char (1),
 NumMedGiven	varchar (2),
 Primary key (Reservation#,PetID),
-Foreign Key (Reservation#) References Reservation_Details(Reservation#)) ;
+Foreign Key (Reservation#) References Reservations(Reservation#)) ;
 
-insert into PETS_RESERVATION values ('10000001','F00000001','Y','N','2');
-insert into PETS_RESERVATION values ('10000002','F00000002','Y','Y','2');
-insert into PETS_RESERVATION values ('10000003','F00000003','Y','Y','1');
-insert into PETS_RESERVATION values ('10000004','F00000004','Y','N','0');
-insert into PETS_RESERVATION values ('10000005','F00000005','Y','N','1');
-insert into PETS_RESERVATION values ('10000006','F00000006','Y','N','2');
-insert into PETS_RESERVATION values ('10000007','F00000007','Y','N','1');
-insert into PETS_RESERVATION values ('10000008','F00000008','Y','N','1');
-insert into PETS_RESERVATION values ('10000009','F00000009','Y','N','2');
-insert into PETS_RESERVATION values ('10000010','F00000010','Y','Y','1');
-insert into PETS_RESERVATION values ('10000011','F00000011','Y','N','1');
-insert into PETS_RESERVATION values ('10000012','F00000012','Y','N','0');
-insert into PETS_RESERVATION values ('10000013','F00000013','Y','N','1');
-insert into PETS_RESERVATION values ('10000014','F00000014','Y','Y','1');
-insert into PETS_RESERVATION values ('10000015','F00000015','Y','N','0');
-insert into PETS_RESERVATION values ('10000016','F00000015','Y','N','0');
-insert into PETS_RESERVATION values ('10000017','F00000014','Y','Y','0');
-insert into PETS_RESERVATION values ('10000018','F00000014','Y','Y','0');
-insert into PETS_RESERVATION values ('10000019','F00000011','Y','N','0');
-insert into PETS_RESERVATION values ('10000020','F00000002','Y','N','0');
-insert into PETS_RESERVATION values ('10000021','F00000002','Y','N','0');
-insert into PETS_RESERVATION values ('10000022','F00000004','Y','N','0');
-insert into PETS_RESERVATION values ('10000023','F00000004','Y','N','0');
-insert into PETS_RESERVATION values ('10000024','F00000005','Y','N','0');
-insert into PETS_RESERVATION values ('10000025','F00000001','Y','Y','0');
-insert into PETS_RESERVATION values ('10000026','F00000013','Y','N','0');
-insert into PETS_RESERVATION values ('10000027','F00000007','Y','N','0');
-insert into PETS_RESERVATION values ('10000028','F00000009','Y','N','0');
-insert into PETS_RESERVATION values ('10000029','F00000010','Y','Y','0');
-insert into PETS_RESERVATION values ('10000030','F00000003','Y','N','0');
-insert into PETS_RESERVATION values ('10000031','D00000001','Y','N','1');
-insert into PETS_RESERVATION values ('10000032','D00000002','Y','N','2');
-insert into PETS_RESERVATION values ('10000033','D00000003','Y','N','1');
-insert into PETS_RESERVATION values ('10000034','D00000004','Y','N','1');
-insert into PETS_RESERVATION values ('10000035','D00000005','Y','Y','0');
-insert into PETS_RESERVATION values ('10000036','D00000006','Y','N','1');
-insert into PETS_RESERVATION values ('10000037','D00000007','Y','N','1');
-insert into PETS_RESERVATION values ('10000038','D00000008','Y','N','1');
-insert into PETS_RESERVATION values ('10000039','D00000009','Y','N','1');
-insert into PETS_RESERVATION values ('10000040','D00000010','Y','Y','1');
-insert into PETS_RESERVATION values ('10000041','D00000011','Y','N','1');
-insert into PETS_RESERVATION values ('10000042','D00000012','Y','N','0');
-insert into PETS_RESERVATION values ('10000043','D00000013','Y','N','1');
-insert into PETS_RESERVATION values ('10000044','D00000014','Y','Y','1');
-insert into PETS_RESERVATION values ('10000045','D00000015','Y','N','0');
-insert into PETS_RESERVATION values ('10000046','D00000015','Y','N','3');
-insert into PETS_RESERVATION values ('10000047','D00000011','Y','N','1');
-insert into PETS_RESERVATION values ('10000048','D00000004','Y','N','2');
-insert into PETS_RESERVATION values ('10000049','D00000012','Y','N','0');
-insert into PETS_RESERVATION values ('10000050','D00000005','Y','Y','4');
-insert into PETS_RESERVATION values ('10000051','D00000001','Y','N','0');
-insert into PETS_RESERVATION values ('10000052','D00000002','Y','N','4');
-insert into PETS_RESERVATION values ('10000053','D00000003','Y','N','1');
-insert into PETS_RESERVATION values ('10000054','D00000004','Y','N','4');
-insert into PETS_RESERVATION values ('10000055','D00000002','Y','Y','3');
-insert into PETS_RESERVATION values ('10000056','D00000006','Y','N','2');
-insert into PETS_RESERVATION values ('10000057','D00000008','Y','N','1');
-insert into PETS_RESERVATION values ('10000058','D00000003','Y','N','1');
-insert into PETS_RESERVATION values ('10000059','D00000008','Y','Y','1');
-insert into PETS_RESERVATION values ('10000060','D00000003','Y','N','0');
+insert into RESERVATION_DETAILS values ('10000001','F00000001','Y','N','2');
+insert into RESERVATION_DETAILS values ('10000002','F00000002','Y','Y','2');
+insert into RESERVATION_DETAILS values ('10000003','F00000003','Y','Y','1');
+insert into RESERVATION_DETAILS values ('10000004','F00000004','Y','N','0');
+insert into RESERVATION_DETAILS values ('10000005','F00000005','Y','N','1');
+insert into RESERVATION_DETAILS values ('10000006','F00000006','Y','N','2');
+insert into RESERVATION_DETAILS values ('10000007','F00000007','Y','N','1');
+insert into RESERVATION_DETAILS values ('10000008','F00000008','Y','N','1');
+insert into RESERVATION_DETAILS values ('10000009','F00000009','Y','N','2');
+insert into RESERVATION_DETAILS values ('10000010','F00000010','Y','Y','1');
+insert into RESERVATION_DETAILS values ('10000011','F00000011','Y','N','1');
+insert into RESERVATION_DETAILS values ('10000012','F00000012','Y','N','0');
+insert into RESERVATION_DETAILS values ('10000013','F00000013','Y','N','1');
+insert into RESERVATION_DETAILS values ('10000014','F00000014','Y','Y','1');
+insert into RESERVATION_DETAILS values ('10000015','F00000015','Y','N','0');
+insert into RESERVATION_DETAILS values ('10000016','F00000015','Y','N','0');
+insert into RESERVATION_DETAILS values ('10000017','F00000014','Y','Y','0');
+insert into RESERVATION_DETAILS values ('10000018','F00000014','Y','Y','0');
+insert into RESERVATION_DETAILS values ('10000019','F00000011','Y','N','0');
+insert into RESERVATION_DETAILS values ('10000020','F00000002','Y','N','0');
+insert into RESERVATION_DETAILS values ('10000021','F00000002','Y','N','0');
+insert into RESERVATION_DETAILS values ('10000022','F00000004','Y','N','0');
+insert into RESERVATION_DETAILS values ('10000023','F00000004','Y','N','0');
+insert into RESERVATION_DETAILS values ('10000024','F00000005','Y','N','0');
+insert into RESERVATION_DETAILS values ('10000025','F00000001','Y','Y','0');
+insert into RESERVATION_DETAILS values ('10000026','F00000013','Y','N','0');
+insert into RESERVATION_DETAILS values ('10000027','F00000007','Y','N','0');
+insert into RESERVATION_DETAILS values ('10000028','F00000009','Y','N','0');
+insert into RESERVATION_DETAILS values ('10000029','F00000010','Y','Y','0');
+insert into RESERVATION_DETAILS values ('10000030','F00000003','Y','N','0');
+insert into RESERVATION_DETAILS values ('10000031','D00000001','Y','N','1');
+insert into RESERVATION_DETAILS values ('10000032','D00000002','Y','N','2');
+insert into RESERVATION_DETAILS values ('10000033','D00000003','Y','N','1');
+insert into RESERVATION_DETAILS values ('10000034','D00000004','Y','N','1');
+insert into RESERVATION_DETAILS values ('10000035','D00000005','Y','Y','0');
+insert into RESERVATION_DETAILS values ('10000036','D00000006','Y','N','1');
+insert into RESERVATION_DETAILS values ('10000037','D00000007','Y','N','1');
+insert into RESERVATION_DETAILS values ('10000038','D00000008','Y','N','1');
+insert into RESERVATION_DETAILS values ('10000039','D00000009','Y','N','1');
+insert into RESERVATION_DETAILS values ('10000040','D00000010','Y','Y','1');
+insert into RESERVATION_DETAILS values ('10000041','D00000011','Y','N','1');
+insert into RESERVATION_DETAILS values ('10000042','D00000012','Y','N','0');
+insert into RESERVATION_DETAILS values ('10000043','D00000013','Y','N','1');
+insert into RESERVATION_DETAILS values ('10000044','D00000014','Y','Y','1');
+insert into RESERVATION_DETAILS values ('10000045','D00000015','Y','N','0');
+insert into RESERVATION_DETAILS values ('10000046','D00000015','Y','N','3');
+insert into RESERVATION_DETAILS values ('10000047','D00000011','Y','N','1');
+insert into RESERVATION_DETAILS values ('10000048','D00000004','Y','N','2');
+insert into RESERVATION_DETAILS values ('10000049','D00000012','Y','N','0');
+insert into RESERVATION_DETAILS values ('10000050','D00000005','Y','Y','4');
+insert into RESERVATION_DETAILS values ('10000051','D00000001','Y','N','0');
+insert into RESERVATION_DETAILS values ('10000052','D00000002','Y','N','4');
+insert into RESERVATION_DETAILS values ('10000053','D00000003','Y','N','1');
+insert into RESERVATION_DETAILS values ('10000054','D00000004','Y','N','4');
+insert into RESERVATION_DETAILS values ('10000055','D00000002','Y','Y','3');
+insert into RESERVATION_DETAILS values ('10000056','D00000006','Y','N','2');
+insert into RESERVATION_DETAILS values ('10000057','D00000008','Y','N','1');
+insert into RESERVATION_DETAILS values ('10000058','D00000003','Y','N','1');
+insert into RESERVATION_DETAILS values ('10000059','D00000008','Y','Y','1');
+insert into RESERVATION_DETAILS values ('10000060','D00000003','Y','N','0');
 
-Select * from PETS_RESERVATION;
+Select * from RESERVATION_DETAILS;
 
 --Testing for entity integrity--
 Select *
@@ -602,7 +582,8 @@ create table PET_MEDICATIONS (
    DateAdministered			Date		Not null,
    Reservation#			Decimal (8,0)		Not null,
    Primary Key (PetID,TimeAdministered,DateAdministered),
-   Foreign Key (Reservation#) REFERENCES RESERVATION_DETAILS(Reservation#));
+   Foreign Key (Reservation#) REFERENCES RESERVATIONS(Reservation#),
+   Foreign Key (PetID) References Pets(PetID));
 
 
 insert into PET_MEDICATIONS values ('F00000001','18:00','01/15/2019','10000042');
@@ -637,7 +618,8 @@ insert into PET_MEDICATIONS values ('D00000014','17:00','06/25/2019','10000031')
 insert into PET_MEDICATIONS values ('F00000006','06:00','02/25/2019','10000017');
 
 
-Select * from PET_MEDICATIONS
+Select * from PET_MEDICATIONS;
+
 
 --Testing for entity integrity--
 Select *
