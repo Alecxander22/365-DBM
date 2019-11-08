@@ -104,6 +104,23 @@ Select CFName, CLName, PhoneAreaCode, Phone
 								from RESERVATION_DETAILS
 									where Reservation# = '10000026'));
 --------------------------------------------------------------------------------------------------------
+/* 5. Anthony Abraham wants to know if his pet was given medicine and if so, at what time. Find the information 
+and store it as Abrahams_Visit. -ST */
+
+CREATE VIEW Abrahams_Visit AS
+SELECT COUNT(TimeAdministered) "Number Of Meds Given", TimeAdministered
+ FROM PET_MEDICATIONS 
+  WHERE PetID IN
+    (SELECT PetID 
+       FROM PETS
+         WHERE CustomerID IN
+          (SELECT CustomerID 
+	        FROM CUSTOMERS
+	         WHERE CLName = 'Abraham'))
+GROUP BY TimeAdministered;
+
+SELECT * FROM Abrahams_Visit;
+--------------------------------------------------------------------------------------------------------
 /* 7. View -TD */
 
 /* Which Pets have been given medications before? */
