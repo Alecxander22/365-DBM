@@ -68,11 +68,11 @@ does not allow RESERVATION_DETAILS values to be entered before RESERVATIONS valu
 Insert into PETS Values ('F00000046','C00000089','Snowflake','Cat','Tabby','6.5','08/14/2009','F','Y');
 --------------------------------------------------------------------------------------------------------
 /* 9. Construct 4 other preliminary tests to show that your database design works - select tests that
-you know will make your design fail where it should.*/
+you know will make your design fail where it should. --Todd */
 insert into RESERVATIONS values ('10000084','12:17','10:56','02/22/2019','02/23/2019','S80000000','Twenty-One');
 --------------------------------------------------------------------------------------------------------
 /* 10. Construct 4 other preliminary tests to show that your database design works - select tests that
-you know will make your design fail where it should.*/
+you know will make your design fail where it should. --Todd*/
 insert into paycheck values ('S10000000', 5,'2014-10-9',90000.00,904261.20)
 -------------------------------------------------------------------------------------------------------
 /* 1. Advanced Query, Group by/having. How many female dogs do we have in the database? */
@@ -82,7 +82,7 @@ Select Count(petid) as 'Female dogs in the database'
 		Group by Species, gender
 			Having Species='dog' and Gender='f'
 --------------------------------------------------------------------------------------------------------
-/* 3. Advanced Query 3 must use the GROUP BY/HAVING clauses How many Pets have had 
+/* 3. Advanced Query 3 must use the GROUP BY/HAVING clauses --Todd  How many Pets have had 
 more than one dosage of medication while staying with us?*/
 
 Select petid as "Pets with more than 1 Administration of Medication"
@@ -90,7 +90,7 @@ Select petid as "Pets with more than 1 Administration of Medication"
 	group by petid
 	having count(petid)>1;
 --------------------------------------------------------------------------------------------------------	
-/*4. Advanced Query 3 must use fully NESTED queries (no joins) that combines 3 or more data tables.
+/*4. Advanced Query 3 must use fully NESTED queries (no joins) that combines 3 or more data tables. --Todd
 Who had reservation# 10000026? They forgot to pay!*/
 	
 Select CFName, CLName, PhoneAreaCode, Phone
@@ -101,7 +101,7 @@ Select CFName, CLName, PhoneAreaCode, Phone
 								from RESERVATION_DETAILS
 									where Reservation# = '10000026'));
 --------------------------------------------------------------------------------------------------------
-/* 7. Advanced Queries 3 must be Views
+/* 7. Advanced Queries 3 must be Views --Todd
 Which Pets have been given medications before?*/
 
 create view Pets_Given_Medication as
