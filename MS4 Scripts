@@ -121,9 +121,21 @@ GROUP BY TimeAdministered;
 
 SELECT * FROM Abrahams_Visit;
 --------------------------------------------------------------------------------------------------------
-/* 7. View -TD */
+/* Management want to know how the second half of the year's third quarter went. 
+List the dates of check in and prices paid. Store the information in 2NDhalf_3RDquarter. 
+Order by oldest to newest. -ST */
 
-/* Which Pets have been given medications before? */
+CREATE VIEW "2NDhalf_3RDquarter" AS
+SELECT DateOfCheckIn, Price
+ FROM RESERVATIONS 
+  WHERE DateOfCheckIn Between '09/01/19' and '10/31/19'
+GROUP BY DateOfCheckIn, Price; 
+
+SELECT *
+ FROM [2NDhalf_3RDquarter]
+  ORDER BY DateOfCheckIN;
+--------------------------------------------------------------------------------------------------------
+/* Which Pets have been given medications before? Store the result as Pets_Given_Medication. -TD */
 
 Create view Pets_Given_Medication as
 	select PetID
