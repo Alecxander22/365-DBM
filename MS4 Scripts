@@ -92,7 +92,7 @@ Select petid as "Pets with more than 1 Administration of Medication"
 	group by petid
 	having count(petid)>1;
 --------------------------------------------------------------------------------------------------------	
-/*4. Fully NESTED query (no joins) that combines 3 or more data tables. -TD */
+/* 4. Fully NESTED query (no joins) that combines 3 or more data tables. -TD */
 
 /* Who had reservation# 10000026? They forgot to pay! */
 	
@@ -121,7 +121,7 @@ GROUP BY TimeAdministered;
 
 SELECT * FROM Abrahams_Visit;
 --------------------------------------------------------------------------------------------------------
-/* Management want to know how the second half of the year's third quarter went. 
+/* 6. Management want to know how the second half of the year's third quarter went. 
 List the dates of check in and prices paid. Store the information in 2NDhalf_3RDquarter. 
 Order by oldest to newest. -ST */
 
@@ -135,7 +135,7 @@ SELECT *
  FROM [2NDhalf_3RDquarter]
   ORDER BY DateOfCheckIN;
 --------------------------------------------------------------------------------------------------------
-/* Which Pets have been given medications before? Store the result as Pets_Given_Medication. -TD */
+/* 7. Which Pets have been given medications before? Store the result as Pets_Given_Medication. -TD */
 
 Create view Pets_Given_Medication as
 	select PetID
