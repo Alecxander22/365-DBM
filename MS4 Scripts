@@ -83,6 +83,20 @@ Select Count(petid) as 'Female dogs in the database'
 		Group by Species, gender
 			Having Species='dog' and Gender='f';
 --------------------------------------------------------------------------------------------------------
+/* 2. Group by/Having Clause
+
+Steve (The new guy) isn't sure if he checked out a dog on the 5th of february or if
+somehow it is hiding in the building. Check the database to see if a dog was picked up by its owner
+on that day*/
+
+Select DateofCheckOut, Count(*) as 'Dogs checked out that day'
+	From Reservations R Join RESERVATION_DETAILS RD
+		On R.Reservation#=RD.Reservation#
+			Where petID like 'D%'
+				Group by DateofCheckOut
+					Having DateofCheckOut='2019-02-05';
+--------------------------------------------------------------------------------------------------------
+
 /* 3. GROUP BY/HAVING clause -TD */
 
 /* How many Pets have had more than one dosage of medication while staying with us? */
