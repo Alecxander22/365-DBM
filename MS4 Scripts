@@ -2,10 +2,10 @@
 
 -------------------------------------------------------------------------------------------------------
 
-/* Basic Queries */
+/* BASIC QUERIES */
 
 /* 1. Two INSERT statements in a row – the first one adding a new Pet, the second one adding a new
-Boarding for that Pet, should succeed. */
+Boarding for that Pet, should succeed. -ST */
 
 BEGIN TRANSACTION;
 
@@ -21,11 +21,8 @@ SELECT * FROM RESERVATIONS;
 SELECT * FROM RESERVATION_DETAILS;
 
 COMMIT;
-
--ST
-
 --------------------------------------------------------------------------------------------------------
-/* 2. A similar two INSERT statements executed in the opposite order should fail. */
+/* 2. A similar two INSERT statements executed in the opposite order should fail. -ST */
 
 BEGIN TRANSACTION;
 
@@ -44,11 +41,8 @@ SELECT * FROM PETS;
 Reservation# in RESERVATION_DETAILS is a foriegn key to RESERVATIONS. */ 
 
 ROLLBACK; 
-
--ST
-
 -------------------------------------------------------------------------------------------------------
-/* 3. Adding reservation details without a reservation should fail. */
+/* 3. Adding reservation details without a reservation should fail. -ST */
 
 BEGIN TRANSACTION
 
@@ -61,37 +55,46 @@ SELECT * FROM RESERVATIONS;
 /* The reservation# in RESERVATION_DETAILS references back to the reservation# in RESERVATIONS, so the DBMS
 does not allow RESERVATION_DETAILS values to be entered before RESERVATIONS values. */
 
-
+ROLLBACK;
 --------------------------------------------------------------------------------------------------------
-/* 7. Basic Query adding a pet to the database, and putting in a customerID that does not exist in the database */
+/* 7. Adding a pet to the database, and putting in a customerID that does not exist in the database. -TD */
 
 Insert into PETS Values ('F00000046','C00000089','Snowflake','Cat','Tabby','6.5','08/14/2009','F','Y');
 --------------------------------------------------------------------------------------------------------
 /* 9. Construct 4 other preliminary tests to show that your database design works - select tests that
-you know will make your design fail where it should. --Todd */
-insert into RESERVATIONS values ('10000084','12:17','10:56','02/22/2019','02/23/2019','S80000000','Twenty-One');
+you know will make your design fail where it should. -TD */
+
+Insert into RESERVATIONS values ('10000084','12:17','10:56','02/22/2019','02/23/2019','S80000000','Twenty-One');
 --------------------------------------------------------------------------------------------------------
 /* 10. Construct 4 other preliminary tests to show that your database design works - select tests that
-you know will make your design fail where it should. --Todd*/
-insert into paycheck values ('S10000000', 5,'2014-10-9',90000.00,904261.20)
+you know will make your design fail where it should. -TD */
+
+Insert into paycheck values ('S10000000', 5,'2014-10-9',90000.00,904261.20)
 -------------------------------------------------------------------------------------------------------
-/* 1. Advanced Query, Group by/having. How many female dogs do we have in the database? */
+
+/* ADVANCED QUERIES */
+
+/* 1. GROUP BY/HAVING clause */
+
+/* How many female dogs do we have in the database? */
 
 Select Count(petid) as 'Female dogs in the database'
 	From Pets
 		Group by Species, gender
-			Having Species='dog' and Gender='f'
+			Having Species='dog' and Gender='f';
 --------------------------------------------------------------------------------------------------------
-/* 3. Advanced Query 3 must use the GROUP BY/HAVING clauses --Todd  How many Pets have had 
-more than one dosage of medication while staying with us?*/
+/* 3. GROUP BY/HAVING clause -TD */
+
+/* How many Pets have had more than one dosage of medication while staying with us? */
 
 Select petid as "Pets with more than 1 Administration of Medication"
 	from PET_MEDICATIONS
 	group by petid
 	having count(petid)>1;
 --------------------------------------------------------------------------------------------------------	
-/*4. Advanced Query 3 must use fully NESTED queries (no joins) that combines 3 or more data tables. --Todd
-Who had reservation# 10000026? They forgot to pay!*/
+/*4. Fully NESTED query (no joins) that combines 3 or more data tables. -TD */
+
+/* Who had reservation# 10000026? They forgot to pay! */
 	
 Select CFName, CLName, PhoneAreaCode, Phone
 	from Customers
@@ -101,13 +104,14 @@ Select CFName, CLName, PhoneAreaCode, Phone
 								from RESERVATION_DETAILS
 									where Reservation# = '10000026'));
 --------------------------------------------------------------------------------------------------------
-/* 7. Advanced Queries 3 must be Views --Todd
-Which Pets have been given medications before?*/
+/* 7. View -TD */
 
-create view Pets_Given_Medication as
+/* Which Pets have been given medications before? */
+
+Create view Pets_Given_Medication as
 	select PetID
 		from pet_medications
 		group by petid
 
-		select* from Pets_Given_Medication
+		select* from Pets_Given_Medication;
 --------------------------------------------------------------------------------------------------------
