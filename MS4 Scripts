@@ -57,6 +57,24 @@ does not allow RESERVATION_DETAILS values to be entered before RESERVATIONS valu
 
 ROLLBACK;
 --------------------------------------------------------------------------------------------------------
+/* 4. For a given reservation, it should be possible to see all of the descriptions and amounts that pertain to it. */
+Select *
+	From RESERVATION_DETAILS R, PETS_RESERVATION P
+		Where P.Reservation#= '10000004' and R.Reservation#='10000004'
+--------------------------------------------------------------------------------------------------------
+/*5. Trying to delete a Pet who has past on should fail*/
+begin transaction;
+delete from PETS where PetID ='F00000001'
+
+select * from pets
+rollback;
+--------------------------------------------------------------------------------------------------------
+/*6. Entering a new employee without any days absent from work should succeed.*/
+Insert into STAFF
+ values ('S11110000', 'recordkeeper', 'Alyssa', 'Toliver', '3560 Sawgrass Dr.', 'Anthem', '85086', 'AZ', 'US', '6309853333', 12.50, '12-13-18','12345678','91123456','0.06','.05');
+
+ select * from STAFF;
+ --------------------------------------------------------------------------------------------------------
 /* 7. Adding a pet to the database, and putting in a customerID that does not exist in the database. -AB */
 
 Insert into PETS Values ('F00000046','C00000089','Snowflake','Cat','Tabby','6.5','08/14/2009','F','Y');
@@ -165,3 +183,33 @@ Create view Pets_Given_Medication as
 
 		select* from Pets_Given_Medication;
 --------------------------------------------------------------------------------------------------------
+/* 8. Create view Tempe_Pets_Colors and write the fully nested statement to list the PetID and color of the pet for a pet 
+whose owners address is in the city of Tempe.-AA*/
+
+Create View Tempe_Pets_Colors AS
+
+select PetID,Color
+	from COLOR
+		where PetID IN
+	(select  PetID
+		from PETS
+			where CustomerID in
+				(select CustomerID
+					from CUSTOMERS
+						where City='Tempe'));
+select * 
+	From Tempe_Pets_Colors
+--------------------------------------------------------------------------------------------------------
+/* 9. Write the fully nested query to display the city and state of all guests who 
+checked in a pet who did get a bath.-AA*/
+
+
+Select C.City, C.State, C.CustomerID
+	from Customers C
+		where CustomerID in 
+		(select CustomerID
+			from PETS
+				where PetID in
+			(select PetID
+				from RESERVATION_DETAILS
+					where Bath='Y'));
