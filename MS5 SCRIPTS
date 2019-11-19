@@ -1,0 +1,21 @@
+/* Team 11- Team Phoenix- M5 */
+
+--------------------------------------------------------------------------------------------------------
+
+/* Transactions */
+
+--------------------------------------------------------------------------------------------------------
+
+/* 2. When adding a new part-time employee, also add the record to the ‘child’ table to reflect all of the employee’s information. */
+
+BEGIN TRANSACTION; 
+
+Insert into STAFF 
+  values ('S14000000', 'receptionist', 'Shelley', 'Robinson', '8788 N. Rocker Ln.', 'Anthem', '85086', 'AZ', 'US', '6029125678', 11.00, '11-18-19','87678934','12356784','0.06','.05');
+Insert into PART_TIMERS 
+  values ('S14000000', 'Sabrina', 'Jacobs', 'Margaret', '4807890045');
+
+COMMIT;
+
+Select * from STAFF;
+Select * from PART_TIMERS;
