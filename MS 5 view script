@@ -1,1 +1,11 @@
-
+	Create View PamperedPets as
+Select C.CustomerID, CFName, C.City, C.State, C.zip, p.PetID, PetName, Species, RD.Reservation#, Bath, Vaccinations,
+		NumMedGiven, DateofCheckIn, DateOfCheckOut, Price, S.StaffID, FName, TimeIn, TimeGone
+	from Customers C Join Pets P
+		ON C.CustomerID=P.CustomerID
+	Join RESERVATION_DETAILS RD 
+		on RD.PetID=P.PetID
+	Join Reservations R 
+		On R.Reservation#=RD.Reservation#
+	Join Staff S
+		On S.StaffID=R.StaffID;
