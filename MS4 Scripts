@@ -126,7 +126,7 @@ Select DateofCheckOut, Count(*) as 'Dogs checked out that day'
 
 /* How many Pets have had more than one dosage of medication while staying with us? */
 
-Select petid as "Pets with more than 1 Administration of Medication"
+Select petid as "Pets with more than 1 Administration of Medication", count(petid) as "Number of Dosages"
 	from PET_MEDICATIONS
 	group by petid
 	having count(petid)>1;
