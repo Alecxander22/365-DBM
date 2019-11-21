@@ -58,5 +58,17 @@ CREATE TRIGGER AddResvDetails
 defined (cluster index is already created) to speed up the query you will define in #3.
 Take a snapshot of the tables you will use (select * from each table and show the attributes
 and a few rows of data in each one). */
+--------------------------------------------------------------------------------------------------------
+
+/* 3.(2) Create an advancedjoinquery and execute (use any multiple tables you wish).  
+Show the query, the data results, the time to complete, and the query plan 
+(take snapshots of each).  The idea here is to create a query that will tax the 
+computer resources –force the DBMS to use its resources.    */
+
+SELECT P.PetID, PetName, Breed, RD.Reservation#, Price, DateofCheckIn, DateofCheckOut, S.StaffID, CONCAT(FName, LName) "Staff Name"
+ FROM PETS P, RESERVATION_DETAILS RD, RESERVATIONS R, Staff S
+  WHERE P.PetID = RD.PetID
+   AND RD.Reservation# = R.Reservation#
+   AND S.StaffID = R.StaffID;
 
 
