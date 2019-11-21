@@ -50,6 +50,13 @@ CREATE TRIGGER AddResvDetails
   AFTER INSERT
    AS
     INSERT into RESERVATION_DETAILS (Reservation#, PetID)
-    
+  
+--------------------------------------------------------------------------------------------------------
+/* Section 3- Indexes */
+--------------------------------------------------------------------------------------------------------
+/* 1.(2) Identify the attributes (at least 2) that should have secondary indexes 
+defined (cluster index is already created) to speed up the query you will define in #3.
+Take a snapshot of the tables you will use (select * from each table and show the attributes
+and a few rows of data in each one). */
 
 
