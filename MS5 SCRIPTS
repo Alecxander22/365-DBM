@@ -1,42 +1,8 @@
 /* Team 11- Team Phoenix- M5 */
 
 --------------------------------------------------------------------------------------------------------
-
-/* Transactions */
-
+/* Section 1- Transactions */
 --------------------------------------------------------------------------------------------------------
-
-/* 2. When adding a new part-time employee, also add the record to the ‘child’ table to reflect all of the employee’s information. */
-
-BEGIN TRANSACTION; 
-
-Insert into STAFF 
-  values ('S14000000', 'receptionist', 'Shelley', 'Robinson', '8788 N. Rocker Ln.', 'Anthem', '85086', 'AZ', 'US', '6029125678', 11.00, '11-18-19','87678934','12356784','0.06','.05');
-Insert into PART_TIMERS 
-  values ('S14000000', 'Sabrina', 'Jacobs', 'Margaret', '4807890045');
-
-COMMIT;
-
-Select * from STAFF;
-Select * from PART_TIMERS;
-
---------------------------------------------------------------------------------------------------------
-
-/* Trigger */
-
-/* 1.(10) TRIGGER: Add a trigger to your reservation table (or equivalent) so that whenever a new reservationoccurs (i.e. a new INSERT), automatically create the record for the reservation details table.Time in & out and price can be added after the appointment (nulls allowed). */
-
-CREATE TRIGGER AddResvDetails
- ON RESERVATIONS 
-  AFTER INSERT
-   AS
-    INSERT into RESERVATION_DETAILS (Reservation#, PetID)
-    
- ----------------------------------------------------------------------------------------------------------------
-/* Team 11- Team Phoenix- M5*/
------------------------------------------------------------------------------------------------------------------
-/* Section 1 - Transactions*/
-
 /* 1. When a new multi-colorpet is added to the database, also addthe corresponding records to the Color table and the 
 owners table.*/
 
@@ -58,3 +24,32 @@ Commit;
 select * from CUSTOMERS;
 select * from PETS;
 select * from COLOR;
+
+--------------------------------------------------------------------------------------------------------
+/* 2. When adding a new part-time employee, also add the record to the ‘child’ table to reflect all of the employee’s information. */
+
+BEGIN TRANSACTION; 
+
+Insert into STAFF 
+  values ('S14000000', 'receptionist', 'Shelley', 'Robinson', '8788 N. Rocker Ln.', 'Anthem', '85086', 'AZ', 'US', '6029125678', 11.00, '11-18-19','87678934','12356784','0.06','.05');
+Insert into PART_TIMERS 
+  values ('S14000000', 'Sabrina', 'Jacobs', 'Margaret', '4807890045');
+
+COMMIT;
+
+Select * from STAFF;
+Select * from PART_TIMERS;
+
+--------------------------------------------------------------------------------------------------------
+/* Section 2- Trigger */
+--------------------------------------------------------------------------------------------------------
+/* 1.(10) TRIGGER: Add a trigger to your reservation table (or equivalent) so that whenever a new reservationoccurs (i.e. a new INSERT), automatically create the record for the reservation details table.Time in & out and price can be added after the appointment (nulls allowed). */
+
+CREATE TRIGGER AddResvDetails
+ ON RESERVATIONS 
+  AFTER INSERT
+   AS
+    INSERT into RESERVATION_DETAILS (Reservation#, PetID)
+    
+
+
