@@ -66,9 +66,12 @@ Show the query, the data results, the time to complete, and the query plan
 computer resources –force the DBMS to use its resources.    */
 
 SELECT P.PetID, PetName, Breed, RD.Reservation#, Price, DateofCheckIn, DateofCheckOut, S.StaffID, CONCAT(FName, LName) "Staff Name"
- FROM PETS P, RESERVATION_DETAILS RD, RESERVATIONS R, Staff S
-  WHERE P.PetID = RD.PetID
-   AND RD.Reservation# = R.Reservation#
-   AND S.StaffID = R.StaffID;
+ FROM PETS P Join RESERVATION_DETAILS RD
+	on P.PetID=RD.PetID
+		Join RESERVATIONS R
+			On RD.Reservation#=R.Reservation#
+		Join Staff S
+			on S.StaffID=R.StaffID
+   	Order by Fname
 
 
