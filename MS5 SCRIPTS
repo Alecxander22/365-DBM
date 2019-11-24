@@ -90,7 +90,9 @@ and a few rows of data in each one). */
 
 /* A secondary index on FName in STAFF Table and PetName in PETS Table */
 --------------------------------------------------------------------------------------------------------
-
+/* 2.(2) Write the SQL commands to create the secondary indexes for the 2 attributes identified in #1.  
+Give reasons for each attribute selected (use comments).  Take a snapshot of the SQL code for both indexes. */
+--------------------------------------------------------------------------------------------------------
 /* 3.(2) Create an advancedjoinquery and execute (use any multiple tables you wish).  
 Show the query, the data results, the time to complete, and the query plan 
 (take snapshots of each).  The idea here is to create a query that will tax the 
