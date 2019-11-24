@@ -50,7 +50,31 @@ CREATE TRIGGER AddResvDetails
   AFTER INSERT
    AS
     INSERT into RESERVATION_DETAILS (Reservation#, PetID)
-  
+--------------------------------------------------------------------------------------------------------
+    /* Section 2- Procedure
+--------------------------------------------------------------------------------------------------------
+  /*(10) PROCEDURE:  When an employee has a sick day, add a new record to the SickDaysLog 
+to record the employee’sID, name, date sick, and the total number of sick days thus far 
+including the one addedfor this employee. Hint:You will need to create a SickDaysLogto 
+keep track of this data.  The procedure will execute after a new sick day has been recorded 
+for the employee.*/
+
+Create Table SickDaysLog(
+	StaffID  Char(9) Not Null,
+	Fname  Varchar(20),
+	SickDate   Date,
+	TotalSickdays VarChar(3),
+	Primary Key (StaffID, SickDate),
+	foreign key (StaffID) References Staff(StaffID));
+
+Create Procedure SickDay
+	@StaffID Char(9),
+	@Date Date as 
+	Insert Into SickDaysLog
+		Values (@StaffID, 
+			(Select FName from Staff where staffID = @staffid), 
+			@Date, (Select COUNT(*) From SickDaysLog Where StaffID=@StaffID)+1); /*Look at most recent 
+			date for the correct amount of sick days*/
 --------------------------------------------------------------------------------------------------------
 /* Section 3- Indexes */
 --------------------------------------------------------------------------------------------------------
