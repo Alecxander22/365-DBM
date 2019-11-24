@@ -418,12 +418,12 @@ Select *
 
 create table RESERVATIONS (
   Reservation#		Decimal(8,0)			Not null,
-  TimeIn			Char(5)			Not null,
-  TimeGone			Char(5)			Not null,
-  DateofCheckIn		Date			Not null,
-  DateofCheckOut	Date,
-  StaffID			char(9)			Not null,
-  Price			Decimal (8,2)			Not null,
+  TimeIn			Char(5)				,
+  TimeGone			Char(5)				,
+  DateofCheckIn		Date			       		,
+  DateofCheckOut	Date					,
+  StaffID			char(9)				,
+  Price			Decimal (8,2)				,
    Primary Key (Reservation#),
    Foreign Key (StaffID) References Staff(StaffID));
 
