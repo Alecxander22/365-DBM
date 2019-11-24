@@ -9,3 +9,16 @@ Select C.CustomerID, CFName, C.City, C.State, C.zip, p.PetID, PetName, Species, 
 		On R.Reservation#=RD.Reservation#
 	Join Staff S
 		On S.StaffID=R.StaffID;
+----------------------------------------------------------------------------------------------------------------------------
+Create View  Number_of_Reservations_per_Customer as
+
+Select concat(cfname,' ',clname) as "Customers", Count(r.reservation#) as "Number of Times Stayed"
+	From Customers C 
+		Join Pets p
+			On c.CustomerID = p.CustomerID
+		Join Reservation_Details RD
+			On p.Petid = RD.Petid
+		Join Reservations R
+			On R.Reservation# = RD.Reservation#
+	Group By concat(cfname,' ',clname)
+
