@@ -3,13 +3,14 @@
 --------------------------------------------------------------------------------------------------------
 /* Section 1- Transactions */
 --------------------------------------------------------------------------------------------------------
-/* 1. When a new multi-colorpet is added to the database, also addthe corresponding records to the Color table and the 
-owners table.*/
+/* 1. When a new multi-colorpet is added to the database, also addthe corresponding records to the Color 
+table and the owners table.*/
 
 begin transaction;
 
  insert into CUSTOMERS
-	values('C00000041','Rebecca','January','123 Moser Dr','Phoenix','AZ','85001','USA',480,'123-7777','7392810180845555');
+	values('C00000041','Rebecca','January','123 Moser Dr','Phoenix','AZ','85001','USA',480,
+	'123-7777','7392810180845555');
 insert into PETS
 	values('D00000020','C00000041','Bark','Dog','Maltese','40','01/01/2019','M','Y');
 insert into COLOR
@@ -26,12 +27,14 @@ select * from PETS;
 select * from COLOR;
 
 --------------------------------------------------------------------------------------------------------
-/* 2. When adding a new part-time employee, also add the record to the ‘child’ table to reflect all of the employee’s information. */
+/* 2. When adding a new part-time employee, also add the record to the ‘child’ table to reflect all of the 
+employee’s information. */
 
 BEGIN TRANSACTION; 
 
 Insert into STAFF 
-  values ('S14000000', 'receptionist', 'Shelley', 'Robinson', '8788 N. Rocker Ln.', 'Anthem', '85086', 'AZ', 'US', '6029125678', 11.00, '11-18-19','87678934','12356784','0.06','.05');
+  values ('S14000000', 'receptionist', 'Shelley', 'Robinson', '8788 N. Rocker Ln.', 'Anthem', '85086', 
+  'AZ', 'US', '6029125678', 11.00, '11-18-19','87678934','12356784','0.06','.05');
 Insert into PART_TIMERS 
   values ('S14000000', 'Sabrina', 'Jacobs', 'Margaret', '4807890045');
 
@@ -43,7 +46,9 @@ Select * from PART_TIMERS;
 --------------------------------------------------------------------------------------------------------
 /* Section 2- Trigger */
 --------------------------------------------------------------------------------------------------------
-/* 1.(10) TRIGGER: Add a trigger to your reservation table (or equivalent) so that whenever a new reservationoccurs (i.e. a new INSERT), automatically create the record for the reservation details table.Time in & out and price can be added after the appointment (nulls allowed). */
+/* 1.(10) TRIGGER: Add a trigger to your reservation table (or equivalent) so that whenever a new reservation
+occurs (i.e. a new INSERT), automatically create the record for the reservation details table.Time in & out 
+and price can be added after the appointment (nulls allowed). */
 
 CREATE TRIGGER AddResvDetails
  ON RESERVATIONS 
@@ -51,13 +56,13 @@ CREATE TRIGGER AddResvDetails
    AS
     INSERT into RESERVATION_DETAILS (Reservation#, PetID)
 --------------------------------------------------------------------------------------------------------
-    /* Section 2- Procedure
+ /* Section 2- Procedure */
 --------------------------------------------------------------------------------------------------------
-  /*(10) PROCEDURE:  When an employee has a sick day, add a new record to the SickDaysLog 
+ /* (10) PROCEDURE:  When an employee has a sick day, add a new record to the SickDaysLog 
 to record the employee’sID, name, date sick, and the total number of sick days thus far 
 including the one addedfor this employee. Hint:You will need to create a SickDaysLogto 
 keep track of this data.  The procedure will execute after a new sick day has been recorded 
-for the employee.*/
+for the employee. */
 
 Create Table SickDaysLog(
 	StaffID  Char(9) Not Null,
@@ -82,20 +87,17 @@ Create Procedure SickDay
 defined (cluster index is already created) to speed up the query you will define in #3.
 Take a snapshot of the tables you will use (select * from each table and show the attributes
 and a few rows of data in each one). */
+
+/* A secondary index on FName in STAFF Table and PetName in PETS Table */
 --------------------------------------------------------------------------------------------------------
 
 /* 3.(2) Create an advancedjoinquery and execute (use any multiple tables you wish).  
 Show the query, the data results, the time to complete, and the query plan 
 (take snapshots of each).  The idea here is to create a query that will tax the 
-computer resources –force the DBMS to use its resources.    */
+computer resources –force the DBMS to use its resources. */
 
-SELECT P.PetID, PetName, Breed, RD.Reservation#, Price, DateofCheckIn, DateofCheckOut, S.StaffID, CONCAT(FName, LName) "Staff Name"
- FROM PETS P Join RESERVATION_DETAILS RD
-	on P.PetID=RD.PetID
-		Join RESERVATIONS R
-			On RD.Reservation#=R.Reservation#
-		Join Staff S
-			on S.StaffID=R.StaffID
-   	Order by Fname
+
+	
+	
 
 
