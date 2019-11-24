@@ -499,7 +499,7 @@ Select *
 
 create table RESERVATION_DETAILS(
 Reservation#          	decimal(8,0),
-PetID                  	char (9) Not null,
+PetID                  	char (9),
 Vaccinations		char (1),							
 Bath			char (1),
 NumMedGiven	varchar (2),
