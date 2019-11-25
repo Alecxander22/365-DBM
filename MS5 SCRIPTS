@@ -45,6 +45,7 @@ Select * from PART_TIMERS;
 
 --------------------------------------------------------------------------------------------------------
 /* Section 2- Trigger */
+--------------------------------------------------------------------------------------------------------
 /*1.(10) TRIGGER: Add a trigger to your reservation table (or equivalent) so that whenever
  a new reservationoccurs (i.e. a new INSERT), automatically create the record for the 
  reservation details table.Time in & out and price can be added after the appointment (nulls allowed).*/
@@ -67,16 +68,6 @@ Insert Into Reservations Values ('10000061', Null, Null, Null, Null, Null, Null)
 Select * 
 	From Reservation_Details 
 		Where Reservation#='10000061';
---------------------------------------------------------------------------------------------------------
-/* 1.(10) TRIGGER: Add a trigger to your reservation table (or equivalent) so that whenever a new reservation
-occurs (i.e. a new INSERT), automatically create the record for the reservation details table.Time in & out 
-and price can be added after the appointment (nulls allowed). */
-
-CREATE TRIGGER AddResvDetails
- ON RESERVATIONS 
-  AFTER INSERT
-   AS
-    INSERT into RESERVATION_DETAILS (Reservation#, PetID)
 --------------------------------------------------------------------------------------------------------
  /* Section 2- Procedure */
 --------------------------------------------------------------------------------------------------------
