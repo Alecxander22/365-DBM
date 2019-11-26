@@ -118,16 +118,33 @@ Show the query, the data results, the time to complete, and the query plan
 (take snapshots of each).  The idea here is to create a query that will tax the 
 computer resources –force the DBMS to use its resources. */
 
+Select P.PetID, PetName, Breed, RD.Reservation#, Price, DateofCheckIn, 
+S.STAFFID, CONCAT(FName, ' ', LName) "Staff Name", CFName, Color
+  From PETS P JOIN RESERVATION_DETAILS RD
+    On P.PetID = RD.PetID
+	  Join RESERVATIONS R
+	   On Rd.Reservation# = R.Reservation#
+	  Join Staff S
+	   On S.StaffID = R.StaffID
+	  Join CUSTOMERS C
+	   On C.CustomerID = P.CustomerID
+	  Join COLOR Co
+	   On CO.PetID = P.PetID
+	Order By FName;
+	
 --TD --AB --AA --ST
 --------------------------------------------------------------------------------------------------------
-4.(2) Optimize & execute the query in #3.  Show the query, the data results, the time to complete, and 
-the query plan (take snapshots of each).
+/* 4.(2) Optimize & execute the query in #3.  Show the query, the data results, the time to complete, and 
+the query plan (take snapshots of each). */
 
+--(In the pdf file). 
 --------------------------------------------------------------------------------------------------------
-5.(2) Comment on the differences between the results in parts 3 & 4.  How did you expect the query plans 
+/* 5.(2) Comment on the differences between the results in parts 3 & 4.  How did you expect the query plans 
 to be different?  Did you gain time, or lose time –why?  Based on the query that you executed inpart 3, 
-what did you expect to happen and why?
+what did you expect to happen and why? */
 
+We expected the time to be quicker with indexes, but what actually happened was the time got slower.
+We thought adding an index on first name of 
 --------------------------------------------------------------------------------------------------------
 /* Section 4- Analytics Dashboard Overview */
 --------------------------------------------------------------------------------------------------------
