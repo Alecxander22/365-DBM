@@ -1,14 +1,13 @@
 /* Team 11- Team Phoenix- M5 */
-
 --------------------------------------------------------------------------------------------------------
 /* Section 1- Transactions */
 --------------------------------------------------------------------------------------------------------
 /* 1. When a new multi-colorpet is added to the database, also addthe corresponding records to the Color 
-table and the owners table.*/
+table and the owners table. */
 
 begin transaction;
 
- insert into CUSTOMERS
+insert into CUSTOMERS
 	values('C00000041','Rebecca','January','123 Moser Dr','Phoenix','AZ','85001','USA',480,
 	'123-7777','7392810180845555');
 insert into PETS
@@ -26,6 +25,7 @@ select * from CUSTOMERS;
 select * from PETS;
 select * from COLOR;
 
+--AA --ST
 --------------------------------------------------------------------------------------------------------
 /* 2. When adding a new part-time employee, also add the record to the ‘child’ table to reflect all of the 
 employee’s information. */
@@ -43,12 +43,13 @@ COMMIT;
 Select * from STAFF;
 Select * from PART_TIMERS;
 
+--ST -AA
 --------------------------------------------------------------------------------------------------------
 /* Section 2- Trigger */
 --------------------------------------------------------------------------------------------------------
-/*1.(10) TRIGGER: Add a trigger to your reservation table (or equivalent) so that whenever
+/* 1.(10) TRIGGER: Add a trigger to your reservation table (or equivalent) so that whenever
  a new reservationoccurs (i.e. a new INSERT), automatically create the record for the 
- reservation details table.Time in & out and price can be added after the appointment (nulls allowed).*/
+ reservation details table.Time in & out and price can be added after the appointment (nulls allowed). */
 
  Create Trigger AutoReservation 
  on Reservations
@@ -68,6 +69,8 @@ Insert Into Reservations Values ('10000061', Null, Null, Null, Null, Null, Null)
 Select * 
 	From Reservation_Details 
 		Where Reservation#='10000061';
+		
+--AB --TD
 --------------------------------------------------------------------------------------------------------
  /* Section 2- Procedure */
 --------------------------------------------------------------------------------------------------------
@@ -91,8 +94,10 @@ Create Procedure SickDay
 	Insert Into SickDaysLog
 		Values (@StaffID, 
 			(Select FName from Staff where staffID = @staffid), 
-			@Date, (Select COUNT(*) From SickDaysLog Where StaffID=@StaffID)+1); /*Look at most recent 
-			date for the correct amount of sick days*/
+			@Date, (Select COUNT(*) From SickDaysLog Where StaffID=@StaffID)+1); /* Look at most recent 
+			date for the correct amount of sick days */
+			
+--ST --AA --AB --TD
 --------------------------------------------------------------------------------------------------------
 /* Section 3- Indexes */
 --------------------------------------------------------------------------------------------------------
@@ -102,6 +107,8 @@ Take a snapshot of the tables you will use (select * from each table and show th
 and a few rows of data in each one). */
 
 /* A secondary index on FName in STAFF Table and PetName in PETS Table */
+
+--ST
 --------------------------------------------------------------------------------------------------------
 /* 2.(2) Write the SQL commands to create the secondary indexes for the 2 attributes identified in #1.  
 Give reasons for each attribute selected (use comments).  Take a snapshot of the SQL code for both indexes. */
@@ -109,12 +116,75 @@ Give reasons for each attribute selected (use comments).  Take a snapshot of the
 CREATE INDEX FNameX ON STAFF (FName);
 
 CREATE INDEX PetNameX ON PETS (PetName);
+
+--ST
 --------------------------------------------------------------------------------------------------------
 /* 3.(2) Create an advancedjoinquery and execute (use any multiple tables you wish).  
 Show the query, the data results, the time to complete, and the query plan 
 (take snapshots of each).  The idea here is to create a query that will tax the 
 computer resources –force the DBMS to use its resources. */
 
+--TD --AB --AA --ST
+--------------------------------------------------------------------------------------------------------
+4.(2) Optimize & execute the query in #3.  Show the query, the data results, the time to complete, and 
+the query plan (take snapshots of each).
+
+--------------------------------------------------------------------------------------------------------
+5.(2) Comment on the differences between the results in parts 3 & 4.  How did you expect the query plans 
+to be different?  Did you gain time, or lose time –why?  Based on the query that you executed inpart 3, 
+what did you expect to happen and why?
+
+--------------------------------------------------------------------------------------------------------
+/* Section 4- Analytics Dashboard Overview */
+--------------------------------------------------------------------------------------------------------
+/* 1. Services by Customer's Pet */
+
+Create View ServicesByPet as 
+	Select C.CustomerID, C.CFName "Customer First Name",RD.Reservation#,P.PetID,RD.Bath,RD.NumMedGiven,P.PetName
+		from Customers C Join Pets P
+			on C.CustomerID=P.CustomerID
+		Join RESERVATION_DETAILS RD
+			on RD.PetID=P.PetID; 
+			
+--AA
+--------------------------------------------------------------------------------------------------------
+/* 2. Number of Reservations Per Customer */
+
+Create View  Number_of_Reservations_per_Customer as
+Select concat(cfname,' ',clname) as "Customers", Count(r.reservation#) as "Number of Times Stayed"
+	From Customers C join Pets p
+		On c.CustomerID = p.CustomerID
+		Join Reservation_Details RD
+		On p.Petid = RD.Petid
+		Join Reservations R
+		On R.Reservation# = RD.Reservation#
+	Group By concat(cfname,' ',clname)
+
+--TD
+--------------------------------------------------------------------------------------------------------
+/* 3. Revenue by Customer */
+
+--AB
+--------------------------------------------------------------------------------------------------------
+/* 4. What Staff Worked With What Pets Whom Belong to What Customer */
+
+CREATE VIEW Staff_Worked_With AS
+SELECT S.StaffID, Concat(FName, ' ',LName) "Staff Name", P.PetID, 
+PetName, C.CustomerID, Concat(CFName, ' ', CLName) "Customer Name"
+ FROM Staff S JOIN RESERVATIONS R
+  ON S.StaffID = R.StaffID
+  JOIN RESERVATION_DETAILS RD
+  ON R.Reservation# = RD.Reservation#
+  JOIN PETS P
+  ON RD.PetID = P.PetID
+  JOIN CUSTOMERS C
+  ON P.CustomerID = C.CustomerID;
+
+SELECT *
+ FROM Staff_Worked_With
+  ORDER BY PETID;
+  
+--ST
 
 	
 	
