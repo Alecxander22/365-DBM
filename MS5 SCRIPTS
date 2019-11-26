@@ -175,6 +175,15 @@ Select concat(cfname,' ',clname) as "Customers", Count(r.reservation#) as "Numbe
 --------------------------------------------------------------------------------------------------------
 /* 3. Revenue by Customer */
 
+Create View RevenueByCustomer
+	AS
+Select C.CustomerID, Cfname, PetName, R.reservation#, Price
+	From Customers C Join pets P
+		on C.CustomerID=P.CustomerID
+			Join Reservation_Details RD
+		on RD.PetID=P.PetID
+			Join Reservations R
+		on R.Reservation#=RD.Reservation#;
 --AB
 --------------------------------------------------------------------------------------------------------
 /* 4. What Staff Worked With What Pets Whom Belong to What Customer */
