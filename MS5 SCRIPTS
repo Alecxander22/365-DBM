@@ -51,24 +51,18 @@ Select * from PART_TIMERS;
  a new reservationoccurs (i.e. a new INSERT), automatically create the record for the 
  reservation details table.Time in & out and price can be added after the appointment (nulls allowed). */
 
- Create Trigger AutoReservation 
- on Reservations
-	After Insert
-	As
-		Insert into RESERVATION_DETAILS values ((Select Reservation# From Inserted), null, null, null, null);
 
-		Select * From Reservations
+Create Trigger AddDaysAbsent /* New trigger table approved by moser*/
+	on Absences
+		After Insert
+As  /* Creating a trigger on Absences to add 1 to the staff table days absent column*/
+	Update Staff
+		Set DaysAbsent=Daysabsent + 1 
+			Where StaffID=(Select StaffID
+				From Inserted);
 
-		Drop Trigger AutoReservation
+Drop Trigger AddDaysAbsent
 
-
-Select * From Reservations;
-
-Insert Into Reservations Values ('10000061', Null, Null, Null, Null, Null, Null);
-
-Select * 
-	From Reservation_Details 
-		Where Reservation#='10000061';
 		
 --AB --TD
 --------------------------------------------------------------------------------------------------------
