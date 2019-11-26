@@ -186,7 +186,7 @@ Select C.CustomerID, Cfname, PetName, R.reservation#, Price
 		on R.Reservation#=RD.Reservation#;
 --AB
 --------------------------------------------------------------------------------------------------------
-/* 4. What Staff Worked With What Pets Whom Belong to What Customer */
+/* 4. Who Staff Worked With */
 
 CREATE VIEW Staff_Worked_With AS
 SELECT S.StaffID, Concat(FName, ' ',LName) "Staff Name", P.PetID, 
