@@ -143,8 +143,7 @@ the query plan (take snapshots of each). */
 to be different?  Did you gain time, or lose time –why?  Based on the query that you executed inpart 3, 
 what did you expect to happen and why? */
 
-We expected the time to be quicker with indexes, but what actually happened was the time got slower.
-We thought adding an index on first name of 
+--(In the pdf file).
 --------------------------------------------------------------------------------------------------------
 /* Section 4- Analytics Dashboard Overview */
 --------------------------------------------------------------------------------------------------------
