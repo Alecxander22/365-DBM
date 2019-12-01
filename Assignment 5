@@ -1,0 +1,48 @@
+create table celebrities_data
+   (
+    name  char(50),
+    class  char(2),
+    balance  decimal(15,2),
+	manager int);
+  
+insert into celebrities_data 
+  values ('Amy Adams', 'AA', 3000.02,1);
+insert into celebrities_data 
+  values ('Tom Hanks', 'BB', 1000.23,1);
+insert into celebrities_data 
+  values ('Bernardette Peters', 'AA', 4000.13,2);
+insert into celebrities_data 
+  values ('Clint Eastwood', 'BB', 4300.12,3);
+insert into celebrities_data 
+  values ('Sean Connery', 'BB', 5690.26,4);
+  
+  select * from celebrities_data;
+  
+insert into celebrities_data 
+  select * from celebrities_data;
+insert into celebrities_data 
+  select * from celebrities_data;
+insert into celebrities_data 
+  select * from celebrities_data;
+insert into celebrities_data 
+  select * from celebrities_data;
+insert into celebrities_data 
+  select * from celebrities_data;
+insert into celebrities_data 
+  select * from celebrities_data;
+insert into celebrities_data 
+  select * from celebrities_data;
+insert into celebrities_data 
+  select * from celebrities_data;
+insert into celebrities_data 
+  select * from celebrities_data;
+insert into celebrities_data 
+  select * from celebrities_data;
+  
+create table celebrities
+   (cno   int IDENTITY (1,1) NOT NULL PRIMARY KEY,
+    name  char(50),
+    class  char(2),
+    balance  decimal(15,2),
+	mno int,
+	foreign key (mno) references celebreties (cno));
