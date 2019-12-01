@@ -46,3 +46,14 @@ create table celebrities
     balance  decimal(15,2),
 	mno int,
 	foreign key (mno) references celebreties (cno));
+----------------------------------------------------------------	
+select *
+	from celebrities c, celebrities m
+		where c.balance < 5000	
+		and c.mno = m.cno
+order by c.class;
+----------------------------------------------------------------
+select *
+	from celebrities c
+		where c.balance < 5000;
+---------------------------------------------------------------
