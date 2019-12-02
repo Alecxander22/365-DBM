@@ -45,7 +45,10 @@ create table celebrities
     class  char(2),
     balance  decimal(15,2),
 	mno int,
-	foreign key (mno) references celebreties (cno));
+	foreign key (mno) references celebrities (cno));
+	
+insert into celebrities (name, class, balance, mno) 
+   select * from celebrities_data;
 ----------------------------------------------------------------	
 select *
 	from celebrities c, celebrities m
@@ -53,6 +56,8 @@ select *
 		and c.mno = m.cno
 order by c.class;
 ----------------------------------------------------------------
+Create Index xclass on celebrities(class);
+
 select *
 	from celebrities c
 		where c.balance < 5000;
