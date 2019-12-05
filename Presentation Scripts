@@ -20,3 +20,19 @@ Select StaffID, DaysAbsent
 	From Staff
 		Where StaffID='S11000000'
 RollBack;
+
+/*Sick Day Procedure specifically when employees are sick
+the table autopopulates, all thats needed is StaffID and Date*/
+
+Select * 
+	from Sickdayslog
+		Where StaffID='S11000000';
+
+		Begin Transaction
+Exec sickday 'S11000000','12/5/2019'
+	
+Select StaffID, SickDate, TotalSickDays
+	From SickDaysLog
+		Where StaffID='S11000000'
+			Order by TotalSickDays Desc
+Rollback;
