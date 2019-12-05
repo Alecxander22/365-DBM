@@ -1,0 +1,22 @@
+/*Trigger to add one day to DaysAbsent in Staff when an
+absence is entered into the absence table*/
+
+Select *
+	From Absences
+		Where StaffID='S11000000';
+
+Select StaffID, DaysAbsent
+	From Staff
+		Where StaffID='S11000000';
+
+	Begin Transaction
+Insert into Absences Values ('S11000000','12/4/2019')
+
+Select *
+	From Absences
+		Where StaffID='S11000000'
+
+Select StaffID, DaysAbsent
+	From Staff
+		Where StaffID='S11000000'
+RollBack;
