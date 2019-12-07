@@ -87,14 +87,19 @@ Insert into PAYCHECK values ('S10000000','5','2014-10-09',100000,1000000)
 
 --------------------------------------------------------------------------------------------------------
 /* 9. Construct 4 other preliminary tests to show that your database design works - select tests that
-you know will make your design fail where it should. -TD */
+you know will make your design fail where it should. 
+
+Can not input word values into a numeric column (for those not tech savy) 
+This specific example is trying to put in $21 as the base fee -TD */
 
 Insert into RESERVATIONS values ('10000084','12:17','10:56','02/22/2019','02/23/2019','S80000000','Twenty-One');
 --------------------------------------------------------------------------------------------------------
 /* 10. Construct 4 other preliminary tests to show that your database design works - select tests that
-you know will make your design fail where it should. -TD */
+you know will make your design fail where it should. 
 
-Insert into paycheck values ('S10000000', 5,'2014-10-9',90000.00,904261.20)
+Can't give yourself a bonus in a paycheck. Though, $900,000 would be nice. -TD */
+
+Insert into paycheck values ('S10000000', 5,'2014-10-9',90000.00,904261.20);
 -------------------------------------------------------------------------------------------------------
 
 /* ADVANCED QUERIES */
